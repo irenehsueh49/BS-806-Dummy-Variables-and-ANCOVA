@@ -16,6 +16,7 @@ depression <- read.csv("C:/Irene Hsueh's Documents/MS Applied Biostatistics/BS 8
 ```
 
 
+
 ### Preparation
 ```{r}
 #Summary Statistics Stratified by Public Assistance Status
@@ -29,10 +30,12 @@ plot(cesd ~ age, data=depression, col=c("hotpink", "cyan2"))
 ```
 
 
+
 ### Two-Sample Two-Tailed T-Test
 ```{r}
 t.test(cesd ~ publicassist, data=depression)
 ```
+
 
 
 ### Multiple Linear Regression
@@ -52,6 +55,7 @@ anova(no_age, linear_model)
 anova(no_age, linear_model)$F
 anova(no_age, linear_model)$P
 ```
+
 
 
 ### Generating Plots
@@ -77,6 +81,7 @@ confint(linear_model)
 ```
 
 
+
 ### Least Square Means 
 ```{r}
 emmeans(linear_model, pairwise~publicassist)
@@ -89,6 +94,7 @@ lsm_no_assist
 lsm_assist <- linear_model$coefficients[1] + linear_model$coefficients[2]*mean(depression$age) + linear_model$coefficients[3]
 lsm_assist
 ```
+
 
 
 ### Interaction Test 
@@ -117,5 +123,5 @@ assist_interaction_beta
 plot(cesd ~ age, data=depression, col=c("hotpink", "cyan2"))
 abline(no_assist_interaction_intercept, assist_interaction_beta) #No Public Assistance
 abline(assist_interaction_intercept, assist_interaction_beta, lty=2) #Public Assistance
-
 ```
+
